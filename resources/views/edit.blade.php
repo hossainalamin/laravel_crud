@@ -10,40 +10,33 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Student Records</title>
+    <title>Update Student</title>
 </head>
 
 <body>
-    <h1 class="bg-dark text-light text-center">Student List</h1>
-    @if(session("data"))
-    <span class="bg-success text-center">{{session("data")}}</span>
-    @endif
+    <h1 class="bg-dark text-light text-center">Student Update</h1>
     <div class="container">
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Fee</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $result)
-                <tr>
-                    <th scope="row">{{$result['name']}}</th>
-                    <td>{{$result['course']}}</td>
-                    <td>{{$result['fee']}}</td>
-                    <td><a href="edit/{{$result['id']}}" class="btn btn-primary mr-4">Edit</a><a href=""
-                            class="btn btn-danger">Delete</a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <span class="text-center">
-        {{$data->links()}}
-        </span>
-        <a href="/add" class="btn btn-success">Add New Student</a>
+        <form method="POST" action="/upstudent">
+            @csrf
+            <input type="hidden" class="form-control" name="id" value="{{$data['id']}}">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" value="{{$data['name']}}">
+                <span style='color:red;'>@error('name'){{$message}}@enderror</span>
+            </div>
+            <div class="form-group">
+                <label for="course">Course</label>
+                <input type="text" class="form-control" name="course"value="{{$data['course']}}">
+                <span style='color:red;'>@error('course'){{$message}}@enderror</span>
+
+            </div>
+            <div class="form-group">
+                <label for="fee">Fee</label>
+                <input type="text" class="form-control" name="fee"value="{{$data['fee']}}" >
+                <span style='color:red;'>@error('fee'){{$message}}@enderror</span>
+            </div>
+            <button type="submit" class="btn btn-primary mr-4">Update</button>
+        </form>
     </div>
 
     <!-- Optional JavaScript -->

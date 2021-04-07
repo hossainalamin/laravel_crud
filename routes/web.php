@@ -25,3 +25,5 @@ Route::get('/add', function () {
 });
 Route::get("student",[StudentController::class,'index']);
 Route::post("addstudent",[StudentController::class,'add']);
+Route::get("edit/{id}",[StudentController::class,'getById']);
+Route::post("upstudent",[StudentController::class,'update']);
