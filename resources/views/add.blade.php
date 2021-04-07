@@ -10,36 +10,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Student Records</title>
+    <title>Add Student</title>
 </head>
 
 <body>
     <h1 class="bg-dark text-light text-center">Student List</h1>
-    @if(session("data"))
-    <span class="bg-success text-center">{{session("data")}}</span>
-    @endif
     <div class="container">
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Fee</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($data as $result)
-                <tr>
-                    <th scope="row">{{$result['name']}}</th>
-                    <td>{{$result['course']}}</td>
-                    <td>{{$result['fee']}}</td>
-                    <td><a href="" class="btn btn-primary mr-4">Edit</a><a href="" class="btn btn-danger">Delete</a></td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <a href="/add" class="btn btn-success">Add New Student</a>
+        <form method="POST" action="addstudent">
+            @csrf
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" aria-describedby="emailHelp"
+                    placeholder="Enter student name">
+                <span style='color:red;'>@error('name'){{$message}}@enderror</span>
+            </div>
+            <div class="form-group">
+                <label for="course">Course</label>
+                <input type="text" class="form-control" name="course" placeholder="Enter course name">
+                <span style='color:red;'>@error('course'){{$message}}@enderror</span>
+
+            </div>
+            <div class="form-group">
+                <label for="fee">Fee</label>
+                <input type="text" class="form-control" name="fee" placeholder="Enter course fee">
+                <span style='color:red;'>@error('fee'){{$message}}@enderror</span>
+            </div>
+            <button type="submit" class="btn btn-primary mr-4">Submit</button>
+            <a href="student" class="btn btn-success">Back</a>
+        </form>
     </div>
 
     <!-- Optional JavaScript -->

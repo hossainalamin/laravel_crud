@@ -20,4 +20,8 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
+Route::get('/add', function () {
+    return view('add');
+});
 Route::get("student",[StudentController::class,'index']);
+Route::post("addstudent",[StudentController::class,'add']);
