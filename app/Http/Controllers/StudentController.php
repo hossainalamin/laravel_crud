@@ -45,4 +45,9 @@ class StudentController extends Controller
             return redirect("student")->with('data','Record updated');
         }
     }
+    public function delById($id){
+        $student_id = Student::find($id);
+        $student_id->delete();
+        return redirect("student")->with("data","Record deleted successfully");
+    }
 }

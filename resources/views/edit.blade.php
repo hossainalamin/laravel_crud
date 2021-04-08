@@ -18,7 +18,9 @@
     <div class="container">
         <form method="POST" action="/upstudent">
             @csrf
+            <div class="form-group">
             <input type="hidden" class="form-control" name="id" value="{{$data['id']}}">
+            </div> 
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" value="{{$data['name']}}">
@@ -36,6 +38,7 @@
                 <span style='color:red;'>@error('fee'){{$message}}@enderror</span>
             </div>
             <button type="submit" class="btn btn-primary mr-4">Update</button>
+            <a href="/student" class="btn btn-success">Back</a>
         </form>
     </div>
 

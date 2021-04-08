@@ -34,8 +34,7 @@
                     <th scope="row">{{$result['name']}}</th>
                     <td>{{$result['course']}}</td>
                     <td>{{$result['fee']}}</td>
-                    <td><a href="edit/{{$result['id']}}" class="btn btn-primary mr-4">Edit</a><a href=""
-                            class="btn btn-danger">Delete</a></td>
+                    <td><a href="edit/{{$result['id']}}" class="btn btn-primary mr-4">Edit</a><a onclick="return confirm('Are you sure to delete?');"href="delete/{{$result['id']}}"class="btn btn-danger">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>
